@@ -4,274 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Max Anderson | Personal Website</title>
+    <title>M.R. Anderson</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7fb;
-            color: #222;
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        #main-navigation {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-
-            background-color: #1e3a5f;
-            padding: 15px;
-
-            border-radius: 10px;
-
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-
-            z-index: 1000;
-        }
-
-        #main-navigation a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-
-            padding: 8px 12px;
-            border-radius: 5px;
-
-            transition: background-color 0.3s ease;
-        }
-
-        #main-navigation a:hover {
-            background-color: #35658f;
-        }
-
-        /* Home */
-        .hero {
-            min-height: 100vh;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            padding: 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 60px;
-            color: #1e3a5f;
-            margin-bottom: 15px;
-        }
-
-        .hero h2 {
-            font-size: 28px;
-            font-weight: normal;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 20px;
-            max-width: 650px;
-        }
-
-        /* General sections */
-        section:not(.hero) {
-            min-height: 60vh;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            padding: 80px 20px;
-        }
-
-        section h2 {
-            font-size: 40px;
-            color: #1e3a5f;
-            margin-bottom: 20px;
-        }
-
-        section p {
-            max-width: 700px;
-            font-size: 18px;
-        }
-
-        /* Section colors */
-        #about {
-            background-color: white;
-        }
-
-        #hobbies {
-            background-color: #e9f2fa;
-        }
-
-        #education {
-            background-color: white;
-        }
-
-        #work {
-            background-color: #e9f2fa;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1e3a5f;
-            color: white;
-            text-align: center;
-            padding: 25px;
-        }
-
-        /* Mobile */
-        @media (max-width: 600px) {
-
-            #main-navigation {
-                top: 10px;
-                left: 10px;
-                padding: 10px;
-            }
-
-            #main-navigation a {
-                font-size: 14px;
-                padding: 6px 8px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero h2 {
-                font-size: 22px;
-            }
-
-            .hero p {
-                font-size: 17px;
-            }
-
-            section h2 {
-                font-size: 32px;
-            }
-        }
-    </style>
+    <!-- Shared navigation -->
+    <script src="/js/navigation.js" defer></script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav id="main-navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About Me</a>
-        <a href="#hobbies">Hobbies</a>
-        <a href="#education">Education</a>
-        <a href="#work">Work Experience</a>
-    </nav>
+    <!-- =========================================
+         HEADER / LOGO
+         ========================================= -->
+    <div id="site-header"></div>
 
 
-    <!-- Home -->
-    <section class="hero" id="home">
-
-        <h1>Hi, I'm Max Anderson</h1>
-
-        <h2>Welcome to my website!</h2>
-
-        <p>
-            I am 20 years old and I am from
-            Apple Valley, Minnesota.
-            This website is a place to learn
-            more about me, my interests, and
-            my experiences.
-        </p>
-
-    </section>
+    <!-- =========================================
+         PRIMARY NAVIGATION
+         ========================================= -->
+    <div id="site-nav"></div>
 
 
-    <!-- About Me -->
-    <section id="about">
-
-        <h2>About Me</h2>
-
-        <p>
-            My name is Max Anderson. I am 20 years old
-            and I am from Apple Valley, Minnesota.
-            I created this website to introduce myself
-            and share more about who I am.
-        </p>
-
-    </section>
+    <!-- =========================================
+         SECONDARY NAVIGATION
+         ========================================= -->
+    <div id="site-secondary-nav"></div>
 
 
-    <!-- Hobbies -->
-    <section id="hobbies">
+    <!-- =========================================
+         MAIN THREE-COLUMN LAYOUT
+         ========================================= -->
+    <div class="mr-site-shell">
 
-        <h2>My Hobbies</h2>
+        <div class="mr-content-grid">
 
-        <p>
-            This section is where I can share some of
-            my favorite hobbies and things I enjoy
-            doing in my free time.
-        </p>
+            <!-- LEFT COLUMN -->
+            <aside class="mr-side-nav">
 
-    </section>
+                <h2>Navigation</h2>
 
+                <a href="/">Home</a>
+                <a href="/about.html">About</a>
+                <a href="/services.html">Services</a>
+                <a href="/portfolio.html">Portfolio</a>
+                <a href="/contact.html">Contact</a>
 
-    <!-- Education -->
-    <section id="education">
-
-        <h2>Education</h2>
-
-        <p>
-            This section is where I can share information
-            about my education, school, classes, degrees,
-            and academic accomplishments.
-        </p>
-
-    </section>
+            </aside>
 
 
-    <!-- Work Experience -->
-    <section id="work">
+            <!-- CENTER / MAIN CONTENT -->
+            <main class="mr-main">
 
-        <h2>Work Experience</h2>
+                <!-- HERO -->
+                <section class="mr-hero">
 
-        <p>
-            This section is where I can share information
-            about my previous jobs, internships, responsibilities,
-            and professional experience.
-        </p>
+                    <div>
+                        <h2>
+                            Welcome to M.R. Anderson
+                        </h2>
 
-    </section>
+                        <p>
+                            Vision. Creativity. Purpose.
+                        </p>
+                    </div>
 
-
-    <!-- Footer -->
-    <footer>
-
-        <p>
-            &copy; 2026 Max Anderson. All rights reserved.
-        </p>
-
-    </footer>
+                </section>
 
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+                <!-- MAIN CONTENT -->
+                <section>
+
+                    <h2>About M.R. Anderson</h2>
+
+                    <p>
+                        M.R. Anderson is a creative and professional platform
+                        built around thoughtful ideas, meaningful work, and
+                        purposeful direction.
+                    </p>
+
+                    <p>
+                        Explore the site to learn more about the work,
+                        services, projects, and ideas behind M.R. Anderson.
+                        This website is designed to provide a clean,
+                        sophisticated experience while keeping information
+                        easy to find.
+                    </p>
+
+                    <p>
+                        Whether you're exploring the portfolio, learning more
+                        about the services offered, or getting in touch,
+                        everything is organized through the site's simple
+                        navigation system.
+                    </p>
+
+                </section>
+
+
+                <!-- FEATURE SECTION -->
+                <section>
+
+                    <h2>Featured Work</h2>
+
+                    <p>
+                        Discover selected projects, creative work, and
+                        featured information.
+                    </p>
+
+                </section>
+
+            </main>
+
+
+            <!-- RIGHT COLUMN -->
+            <aside class="mr-sticky-content">
+
+                <div class="mr-sticky-card">
+
+                    <h2>Featured</h2>
+
+                    <p>
+                        Stay connected with the latest updates,
+                        featured work, and announcements.
+                    </p>
+
+                    <p>
+                        <a href="/portfolio.html">
+                            View portfolio →
+                        </a>
+                    </p>
+
+                    <hr>
+
+                    <h2>Connect</h2>
+
+                    <p>
+                        <a href="/contact.html">
+                            Get in touch
+                        </a>
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+    <div id="site-footer"></div>
 
 </body>
 </html>
