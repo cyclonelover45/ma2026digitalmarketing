@@ -1,361 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M.R. Anderson</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --forest-dark:#132417;
-    --forest-mid:#1e3a26;
-    --forest-line:#0c1a10;
-    --parchment:#f4eed9;
-    --parchment-dim:#ece2c4;
-    --wood:#6b4426;
-    --wood-dark:#3f2a17;
-    --wood-light:#8a5c34;
-    --gold:#c9a15a;
-    --ink:#2a2015;
-    --ink-soft:#4c4033;
-  }
-
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-
-  body{
-    margin:0;
-    background:
-      radial-gradient(ellipse at top, rgba(255,255,255,0.03), transparent 60%),
-      repeating-linear-gradient(115deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 2px, transparent 2px, transparent 60px),
-      var(--forest-dark);
-    color:var(--ink);
-    font-family:'Source Sans 3', sans-serif;
-    line-height:1.6;
-    padding:clamp(16px, 4vw, 56px);
-  }
-
-  h1,h2,h3{
-    font-family:'Bitter', serif;
-    color:var(--wood-dark);
-    margin:0 0 0.5em 0;
-    letter-spacing:0.01em;
-  }
-
-  a{ color:var(--wood); text-decoration:none; }
-  a:hover{ color:var(--gold); text-decoration:underline; }
-  a:focus-visible, button:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
-
-  .frame{
-    max-width:1180px;
-    margin:0 auto;
-    background:var(--parchment);
-    border:3px solid var(--wood-dark);
-    box-shadow:
-      0 0 0 8px var(--forest-mid),
-      0 0 0 11px var(--wood),
-      0 20px 50px rgba(0,0,0,0.45);
-  }
-
-  /* ---------- HEADER ---------- */
-  .header{
-    display:grid;
-    grid-template-columns:260px 1fr;
-    border-bottom:3px solid var(--wood-dark);
-  }
-  .logo-cell{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:20px;
-    border-right:3px solid var(--wood-dark);
-    background:
-      repeating-linear-gradient(180deg, var(--parchment-dim) 0px, var(--parchment-dim) 3px, var(--parchment) 3px, var(--parchment) 42px);
-  }
-  .badge{
-    width:78px; height:78px;
-    border-radius:50%;
-    border:3px solid var(--wood);
-    display:flex; align-items:center; justify-content:center;
-    background:var(--forest-mid);
-  }
-  .badge svg{ width:44px; height:44px; }
-  .logo-cell .wordmark{
-    font-family:'Bitter', serif;
-    font-weight:700;
-    font-size:1.5rem;
-    color:var(--wood-dark);
-    text-align:center;
-    line-height:1.15;
-  }
-  .logo-cell .sub{
-    font-size:0.7rem;
-    letter-spacing:0.14em;
-    color:var(--ink-soft);
-  }
-
-  .hero-banner{
-    padding:32px 40px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    background:linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dim) 100%);
-  }
-  .hero-banner h1{ font-size:clamp(1.9rem, 4vw, 2.7rem); }
-  .hero-banner p.tagline{
-    font-size:1.05rem;
-    color:var(--ink-soft);
-    font-style:italic;
-    margin:0;
-  }
-
-  /* ---------- NAV ---------- */
-  .nav-primary{
-    display:flex;
-    justify-content:center;
-    gap:clamp(14px,3vw,38px);
-    flex-wrap:wrap;
-    padding:14px 20px;
-    background:var(--wood-dark);
-    border-bottom:3px solid var(--wood-dark);
-  }
-  .nav-primary a{
-    color:var(--parchment);
-    font-family:'Bitter', serif;
-    font-weight:600;
-    font-size:0.98rem;
-    padding:4px 6px;
-    border-bottom:2px solid transparent;
-  }
-  .nav-primary a:hover{
-    color:var(--gold);
-    border-bottom-color:var(--gold);
-    text-decoration:none;
-  }
-
-  .nav-secondary{
-    text-align:center;
-    padding:10px 20px;
-    background:var(--wood-light);
-    color:var(--parchment);
-    font-style:italic;
-    letter-spacing:0.03em;
-    border-bottom:3px solid var(--wood-dark);
-  }
-
-  /* ---------- BODY GRID ---------- */
-  .body-grid{
-    display:grid;
-    grid-template-columns:200px 1fr 240px;
-  }
-
-  .col-left, .col-right{
-    padding:28px 20px;
-    background:var(--parchment-dim);
-  }
-  .col-left{ border-right:3px solid var(--wood-dark); }
-  .col-right{ border-left:3px solid var(--wood-dark); }
-
-  .col-left h3, .col-right h3{
-    font-size:0.85rem;
-    text-transform:uppercase;
-    letter-spacing:0.1em;
-    color:var(--wood);
-    border-bottom:2px solid var(--wood);
-    padding-bottom:6px;
-    margin-bottom:12px;
-  }
-  .col-left ul{ list-style:none; padding:0; margin:0 0 26px 0; }
-  .col-left li{ margin-bottom:10px; }
-  .col-left li a{ font-weight:600; }
-
-  .trail-note{
-    font-size:0.85rem;
-    color:var(--ink-soft);
-    border-left:3px solid var(--gold);
-    padding-left:10px;
-  }
-
-  .sidebar-box{
-    background:var(--parchment);
-    border:2px solid var(--wood);
-    padding:16px;
-    margin-bottom:22px;
-  }
-  .sidebar-box p{ font-size:0.92rem; margin:0 0 10px 0; }
-  .sidebar-box a.cta{
-    font-weight:700;
-    font-family:'Bitter', serif;
-  }
-
-  /* ---------- MAIN CONTENT ---------- */
-  .col-main{
-    padding:32px 40px;
-  }
-
-  .hero-image{
-    height:220px;
-    border-radius:2px;
-    border:2px solid var(--wood-dark);
-    margin-bottom:28px;
-    background:
-      linear-gradient(180deg, #3a6a48 0%, #2c4f36 55%, #23402c 100%);
-    position:relative;
-    overflow:hidden;
-  }
-  .hero-image svg{ position:absolute; bottom:0; left:0; width:100%; height:auto; }
-
-  .col-main h2{
-    font-size:1.6rem;
-    border-bottom:2px solid var(--wood);
-    padding-bottom:8px;
-    margin-top:34px;
-  }
-  .col-main h2:first-of-type{ margin-top:0; }
-  .col-main p{ max-width:68ch; color:var(--ink-soft); }
-
-  .divider{
-    border:none;
-    border-top:2px dashed var(--wood-light);
-    margin:32px 0;
-  }
-
-  /* ---------- FOOTER ---------- */
-  .footer{
-    border-top:3px solid var(--wood-dark);
-    background:var(--wood-dark);
-    color:var(--parchment-dim);
-    padding:20px 32px;
-    font-size:0.85rem;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px 28px;
-    justify-content:space-between;
-    align-items:center;
-  }
-  .footer a{ color:var(--gold); }
-  .footer .links{ display:flex; gap:16px; flex-wrap:wrap; }
-
-  @media (max-width:820px){
-    .header{ grid-template-columns:1fr; }
-    .logo-cell{ border-right:none; border-bottom:3px solid var(--wood-dark); }
-    .body-grid{ grid-template-columns:1fr; }
-    .col-left, .col-right{ border:none; border-top:3px solid var(--wood-dark); }
-    .col-main{ padding:26px 22px; }
-    .footer{ flex-direction:column; align-items:flex-start; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | M.R. Anderson - Northern Outfitter</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/nav.js" defer></script>
 </head>
 <body>
 
-<div class="frame">
+<div class="mr-site-shell">
 
-  <!-- HEADER: Logo + Informational graphic -->
-  <header class="header">
-    <div class="logo-cell">
-      <div class="badge" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#c9a15a" stroke-width="1.6">
-          <path d="M12 2 L20 20 H4 Z"/>
-          <path d="M12 8 L17 20 H7 Z" opacity="0.6"/>
-        </svg>
-      </div>
-      <div class="wordmark">M.R. Anderson</div>
-      <div class="sub">EST. IN THE NORTHWOODS</div>
-    </div>
-    <div class="hero-banner">
-      <h1>Welcome to M.R. Anderson</h1>
-      <p class="tagline">Vision. Creativity. Purpose.</p>
-    </div>
-  </header>
+    <!-- HEADER -->
+    <header class="mr-header">
+        <a href="index.html" class="mr-logo">M.R.A.</a>
+        <div class="mr-header-copy">
+            <div>
+                <h1>M.R. Anderson</h1>
+                <p>Northern Outfitter &middot; Cuyuna, Minnesota</p>
+            </div>
+        </div>
+    </header>
 
-  <!-- PRIMARY NAVIGATION -->
-  <nav class="nav-primary" aria-label="Primary">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    <button class="mr-mobile-toggle" aria-label="Toggle navigation menu">Menu Navigation</button>
 
-  <!-- SECONDARY NAVIGATION / MOTTO STRIP -->
-  <div class="nav-secondary">Thoughtful ideas &middot; Meaningful work &middot; Purposeful direction</div>
-
-  <div class="body-grid">
-
-    <!-- LEFT COLUMN -->
-    <aside class="col-left">
-      <h3>Explore</h3>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#featured-work">Featured Work</a></li>
-        <li><a href="#contact">Connect</a></li>
-      </ul>
-      <p class="trail-note">Everything here is organized through a simple navigation system, so you can quickly find what you're looking for.</p>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="col-main" id="home">
-      <div class="hero-image" role="img" aria-label="Illustration of pine trees and mountains at dusk">
-        <svg viewBox="0 0 800 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="0,220 120,60 240,220" fill="#1c2e20"/>
-          <polygon points="150,220 300,30 460,220" fill="#213524"/>
-          <polygon points="380,220 520,70 650,220" fill="#1c2e20"/>
-          <polygon points="560,220 700,50 800,220" fill="#213524"/>
-          <circle cx="660" cy="55" r="26" fill="#e8d7a3" opacity="0.85"/>
-        </svg>
-      </div>
-
-      <h2 id="about">About M.R. Anderson</h2>
-      <p>M.R. Anderson is a creative and professional platform built around thoughtful ideas, meaningful work, and purposeful direction.</p>
-      <p>Explore the site to learn more about the work, services, projects, and ideas behind M.R. Anderson.</p>
-      <p>Everything is organized through a simple navigation system so visitors can quickly find the information they need.</p>
-
-      <hr class="divider">
-
-      <h2 id="featured-work">Featured Work</h2>
-      <p>Discover selected projects, creative work, and featured information.</p>
-    </main>
-
-    <!-- RIGHT COLUMN -->
-    <aside class="col-right">
-      <h3>Sticky Content</h3>
-      <div class="sidebar-box">
-        <strong>Featured</strong>
-        <p>Stay connected with the latest updates, featured work, and announcements.</p>
-        <a class="cta" href="#portfolio">View portfolio &rarr;</a>
-      </div>
-      <div class="sidebar-box" id="contact">
-        <strong>Connect</strong>
-        <p>Get in touch.</p>
-        <a class="cta" href="mailto:hello@mranderson.com">Get in touch &rarr;</a>
-      </div>
-    </aside>
-
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div>&copy; <span id="year">2026</span> M.R. Anderson. All rights reserved.</div>
-    <nav class="links" aria-label="Footer">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-      <a href="#privacy">Privacy</a>
+    <!-- PRIMARY NAVIGATION -->
+    <nav class="mr-primary-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Expeditions</a>
+        <a href="contact.html">Contact</a>
     </nav>
-    <div>webmaster&#64;mranderson.com</div>
-  </footer>
+
+    <div class="mr-secondary-nav">
+        <a href="#">Trout</a>
+        <a href="#">Northern Pike</a>
+        <a href="#">Smallmouth Bass</a>
+        <a href="#">Largemouth Bass</a>
+    </div>
+
+    <!-- MAIN GRID LAYOUT -->
+    <div class="mr-content-grid">
+
+        <aside class="mr-side-nav">
+            <h2>Explore</h2>
+            <a href="index.html">Home Page</a>
+            <a href="about.html">About Max</a>
+            <a href="portfolio.html">Past Trips</a>
+            <a href="contact.html">Book / Contact</a>
+        </aside>
+
+        <main class="mr-main">
+            <section class="mr-hero">
+                <div>
+                    <h2>Northern Outfitter</h2>
+                    <p>Guide services, outdoor expeditions, and wilderness angling in Minnesota & beyond.</p>
+                </div>
+            </section>
+
+            <section class="mr-section">
+                <h2>Welcome to the Northwoods</h2>
+                <p>Welcome to M.R. Anderson Outfitting, based out of Cuyuna, Minnesota. Specializing in targeting trout, trophy Northern Pike, and aggressive Smallmouth and Largemouth Bass across northern waters.</p>
+                <p>Explore past expeditions, learn more about our outfit, or get in touch to plan your next outdoor excursion.</p>
+            </section>
+
+            <div class="mr-divider"></div>
+
+            <section class="mr-section">
+                <h3>Recent Highlights</h3>
+                <p>Check out our latest water trips including trophy walleye in Kenosha, Canada and river kayak trips in Ramsey, MN.</p>
+                <p><a href="portfolio.html">View Featured Trips &rarr;</a></p>
+            </section>
+        </main>
+
+        <aside class="mr-sticky-content">
+            <div class="mr-sticky-card">
+                <h2>Quick Info</h2>
+                <p><strong>Base:</strong> Cuyuna, MN</p>
+                <p><strong>Focus:</strong> Freshwater Angling & Outfitting</p>
+                <hr>
+                <h2>Connect</h2>
+                <p><a href="contact.html">Send an inquiry &rarr;</a></p>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mr-footer">
+        <div>&copy; M.R. Anderson &middot; Northern Outfitter</div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="portfolio.html">Expeditions</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
 
 </div>
-
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 
 </body>
 </html>
