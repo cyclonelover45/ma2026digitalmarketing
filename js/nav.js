@@ -1,11 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     // 1. Highlight active menu link
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    let currentPage = window.location.pathname.split("/").pop();
+    if (!currentPage || currentPage === "") {
+        currentPage = "index.html";
+    }
+
     const allLinks = document.querySelectorAll(".mr-primary-nav a, .mr-side-nav a, .mr-footer a");
 
     allLinks.forEach(link => {
-        if (link.getAttribute("href") === currentPage) {
+        const linkHref = link.getAttribute("href");
+        if (linkHref === currentPage) {
             link.classList.add("is-active");
+        } else {
+            link.classList.remove("is-active");
         }
     });
 
